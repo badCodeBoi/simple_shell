@@ -20,7 +20,7 @@ int status;
 
 while (1)
 {
-	printf("$ ");
+	printf("#cisfun$ ");
 	fflush(stdout);
 
 if (fgets(buffer, BUFFER_SIZE, stdin) == NULL)
