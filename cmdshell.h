@@ -24,7 +24,7 @@ void print_prompt(void);
 char *read_input(void);
 /*int execute_command(char *command);*/
 char **parse_line(char *line);
-int exe_cmd(char **args[]);
+int exe_cmd(char **args);
 
 /* exit_terminal*/
 void exit_terminal(void);
