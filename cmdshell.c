@@ -83,7 +83,7 @@ printf("Child process exited with status %d\n", WEXITSTATUS(status));
  */
 
 /* Main function */
-int main(void)
+int maiN(void)
 {
 initialize_environment(); /* Call the initialize_environment function */
 execute_command(); /* Call the execute_command function */

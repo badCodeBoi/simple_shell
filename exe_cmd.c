@@ -9,7 +9,7 @@
 * Return: 0 on success, 1 on failure.
 */
 
-int exe_cmd(char *args)
+int execmd(char **args)
 {
 /*Execute the command using the execvp() function */
 if (execvp(args[0], args) == -1)
