@@ -9,7 +9,7 @@
  * Return: Always 0
  */
 
-#define PROMPT "cmdshell..$ "
+#define PROMPT "#cisfun$ "
 
 void process_input(char *buffer);
 
