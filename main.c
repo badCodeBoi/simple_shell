@@ -27,8 +27,8 @@ printf(PROMPT);
 nread = getline(&buffer, &bufsize, stdin);
 if (nread == -1)
 {
-        printf("\n");
-        break;
+printf("\n");
+break;
 }
 buffer[nread - 1] = '\0';
 process_input(buffer);
@@ -38,15 +38,16 @@ free(buffer);
 return (0);
 }
 
-/* exit_terminal - function to exit the terminal.
+/**
+ *  exit_terminal - function to exit the terminal.
  *
  * Return: 0 exit to exit terminal.
  */
 
 void exit_terminal(void)
 {
-    printf("Exiting the cmdshell program.\n");
-    exit(0);
+printf("Exiting the cmdshell program.\n");
+exit(0);
 }
 
 /**
