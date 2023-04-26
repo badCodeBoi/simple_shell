@@ -3,16 +3,20 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
+
 /**
  * main - entry of command Shell.
  *
  * return: 0 on success
  */
+
+
 int main(void)
 {
 char *buffer = NULL;
 size_t bufsize = 0;
 pid_t pid;
+
 while (1)
 {
 printf("$ ");
@@ -39,7 +43,7 @@ exit(EXIT_FAILURE);
 }
 else if (pid == 0)
 {
-        /* child process */
+	/* child process */
 if (execlp(buffer, buffer, (char *) NULL) == -1)
 {
 perror("execlp\n");
@@ -48,11 +52,12 @@ exit(EXIT_FAILURE);
 }
 else
 {
-        /* parent process */
+	/* parent process */
 wait(NULL);
 }
 }
 free(buffer);
 buffer = NULL;
+
 return (0);
 }

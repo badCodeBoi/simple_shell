@@ -1,9 +1,8 @@
-ls
-cat << i > prompt.c
 #include <stdio.h>
 
-void prompt() {
-    printf("$ ");
+void prompt()
+{
+    printf("...$ ");
 }
 
 int main() {
@@ -14,5 +13,5 @@ int main() {
     scanf("%s", command);
     printf("You entered: %s\n", command);
 
-    return 0;
+    return (0);
 }
