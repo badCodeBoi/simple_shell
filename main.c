@@ -104,7 +104,7 @@ while (1)
 prompt();
 char *cmdshell = read_command();
 execute_command(cmdshell);
-parse_args();
+parse_args(char *str, char **args);
 free(cmdshell);
 }
 
