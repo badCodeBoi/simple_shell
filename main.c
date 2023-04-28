@@ -40,7 +40,7 @@ exit(EXIT_FAILURE);
 /* remove trailing newline character */
 cmdshell[strcspn(cmdshell, "\n")] = '\0';
 
-return cmdshell;
+return (cmdshell);
 }
 
 /**
