@@ -13,5 +13,8 @@ void prompt(void);
 char *read_command(void);
 void execute_command(char *cmdshell);
 
+/* parse */
+int parse_args(char *str, char **args);
+
 #endif /* CMDSHELL_STDIO_H */
 
