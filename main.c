@@ -1,6 +1,7 @@
 #include <stdio.h>
+
 /**
-* main -
+* main - Cmdshell Enter "Entry Point"
 *
 * @prompt: prints > "#cisfun" to output.
 * @cmdshell: cmdshell is the commandline[Maxline]
@@ -8,18 +9,18 @@
 
 void prompt()
 {
-    printf("#cisfun$ ");
+printf("#cisfun$ ");
 }
 
 int main()
 {
-    prompt();
+prompt();
 
-    // Wait for user input and print the command
-    char cmdshell[100];
+/* Wait for user input and print the command */
+char cmdshell[100];
 
-    scanf("%s", cmdshell);
-    printf("You entered: %s\n", cmdshell);
+scanf("%s", cmdshell);
+printf("You entered: %s\n", cmdshell);
 
-    return (0);
+return (0);
 }
