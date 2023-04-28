@@ -103,6 +103,7 @@ while (1)
 prompt();
 char *cmdshell = read_command();
 execute_command(cmdshell);
+parse_args();
 free(cmdshell);
 }
 
