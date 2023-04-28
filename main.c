@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <sys/wait.h> /* added for waitpid() */
+#include <sys/wait.h>
 
 #define CMDSHELL_MAXLINE 100
 
@@ -11,15 +11,11 @@ void prompt()
 printf("#cisfun$ ");
 }
 
-int main(void)
+int read_command(char* cmdshell)
 {
-char cmdshell[CMDSHELL_MAXLINE];
-int cmd_stat;
+if (fgets(cmdshell, CMDSHELL_MAXLINE, stdin) == NULL)
+{
 
-while (1)
-{
-prompt();
-if (fgets(cmdshell, CMDSHELL_MAXLINE, stdin) == NULL) {
 if (feof(stdin))
 {
 printf("\n");
@@ -30,35 +26,37 @@ else
 perror("fgets");
 exit(EXIT_FAILURE);
 }
+
 }
-/* remove trailing newline character */
 
 cmdshell[strcspn(cmdshell, "\n")] = '\0';
+return 0;
+}
 
-/* Execute the command */
-pid_t pid = fork(); // create a child process
+int execute_command(char* cmdshell)
+{
+pid_t pid = fork();
+int cmd_stat;
+
 if (pid == -1)
 {
 perror("fork");
 exit(EXIT_FAILURE);
 }
 else if (pid == 0)
-
 {
-/* child process */
-execlp(cmdshell, cmdshell, NULL); /* execute the command */
+execlp(cmdshell, cmdshell, NULL);
 perror("execlp");
 exit(EXIT_FAILURE);
 }
 else
 {
-/* parent process */
 int status;
-waitpid(pid, &status, 0); /* wait for child process to finish */
+waitpid(pid, &status, 0);
 
 if (WIFEXITED(status))
-{ /* check if child process exited normally */
-cmd_stat = WEXITSTATUS(status); /* get the exit status of child process */
+{
+cmd_stat = WEXITSTATUS(status);
 }
 else
 {
@@ -66,13 +64,26 @@ cmd_stat = -1;
 perror("waitpid");
 }
 }
-/* Check for errors */
+
 if (cmd_stat == -1)
 {
 perror("system");
 exit(EXIT_FAILURE);
 }
+
+return 0;
 }
 
-return (0);
+int main(void)
+{
+char cmdshell[CMDSHELL_MAXLINE];
+
+while (1)
+{
+prompt();
+read_command(cmdshell);
+execute_command(cmdshell);
+}
+
+return 0;
 }
