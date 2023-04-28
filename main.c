@@ -46,7 +46,7 @@ else if (pid == 0)
 
 {
 /* child process */
-execlp(cmdshell, cmdshell, NULL); // execute the command
+execlp(cmdshell, cmdshell, NULL); /* execute the command */
 perror("execlp");
 exit(EXIT_FAILURE);
 }
@@ -54,9 +54,11 @@ else
 {
 /* parent process */
 int status;
-waitpid(pid, &status, 0); // wait for child process to finish
-if (WIFEXITED(status)) { // check if child process exited normally
-cmd_stat = WEXITSTATUS(status); // get the exit status of child process
+waitpid(pid, &status, 0); /* wait for child process to finish */
+
+if (WIFEXITED(status))
+{ /* check if child process exited normally */
+cmd_stat = WEXITSTATUS(status); /* get the exit status of child process */
 }
 else
 {
@@ -65,7 +67,8 @@ perror("waitpid");
 }
 }
 /* Check for errors */
-if (cmd_stat == -1) {
+if (cmd_stat == -1)
+{
 perror("system");
 exit(EXIT_FAILURE);
 }
